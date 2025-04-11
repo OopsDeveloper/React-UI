@@ -3,7 +3,7 @@ import './globals.scss'
 import Gnb from './gnb'
 
 export const metadata: Metadata = {
-  title: 'UI요소모음 | FE재남',
+  title: 'UI요소모음',
   description: 'Vanilla / React로 UI요소 만들기',
 }
 

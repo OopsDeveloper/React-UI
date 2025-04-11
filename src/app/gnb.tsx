@@ -41,7 +41,10 @@ const ChildGnbItem = ({
 }
 
 const GnbItem = ({ route, currentPath }: { route: ROUTE; currentPath: ROUTE_PATH }) => {
-  if (isParentRoute(route)) return <ParentGnbItem route={route} currentPath={currentPath} />
+  if (isParentRoute(route)) {
+    return <ParentGnbItem route={route} currentPath={currentPath} />
+  }
+  
   return <ChildGnbItem route={route} currentPath={currentPath} />
 }
 
@@ -53,7 +56,7 @@ const Gnb = () => {
     <aside>
       <h1>
         <Link href="/">
-          UI 요소 모음 <sub>FE재남</sub>
+          UI 요소 모음 <sub>FE</sub>
         </Link>
       </h1>
       <ul className="mainRoutes">

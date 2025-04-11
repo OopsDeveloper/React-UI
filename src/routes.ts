@@ -19,6 +19,9 @@ export const routePaths = [
   '/autoComplete',
   '/dnd',
 ] as const
+// as const로 인해 readonly [ '/', '/accordion', ...]
+
+// typeof 배열명[number] => 배열 안의 모든 요소를 유니언 타입으로 꺼낸다.
 export type ROUTE_PATH = (typeof routePaths)[number]
 
 type BaseRoute = {
@@ -26,9 +29,14 @@ type BaseRoute = {
   link: ROUTE_PATH
   name: string
 }
+
+// BaseRoute 타입 그리고 children 속성을 가진 타입
 export type ParentRoute = BaseRoute & {
   children: ROUTE_PATH[]
 }
+
+// JSX.Element : 리턴값은 리액트 컴포넌트 요소(React 컴포넌트의 반환값 타입)
+// unknown : 어떤 타입이 올지 모를때 선언, 사용하기 전 꼭 type check 필요
 export type ChildRoute = BaseRoute & {
   children: ((props: unknown) => JSX.Element) | null
 }
@@ -170,6 +178,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
   },
 }
 
+// ParentRoute.children는 배열
+// ChildRoute.children는 함수 or null
 export const isParentRoute = (route: ROUTE): route is ParentRoute => Array.isArray(route.children)
 
 export const gnbRootList = (routes['/'] as ParentRoute).children.map(r => routes[r])
