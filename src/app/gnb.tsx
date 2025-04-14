@@ -56,7 +56,7 @@ const Gnb = () => {
     <aside>
       <h1>
         <Link href="/">
-          UI 요소 모음 <sub>FE</sub>
+          UI 요소 모음
         </Link>
       </h1>
       <ul className="mainRoutes">

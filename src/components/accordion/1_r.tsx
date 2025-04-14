@@ -27,7 +27,9 @@ const Accordion1 = () => {
   const [currentId, setCurrentId] = useState<string | null>(data[0].id);
 
   const toggleItem = (id: string) => () => {
-    setCurrentId(prev => prev === id ? null : id)
+    // prev === id : 이미 열린 걸 다시 클릭한 거니까 -> 닫아야 됨 -> null로 바꿈
+    // prev !== id : 다른 걸 클릭했으니까 -> 그걸 새로 열어야 됨 -> id로 바꿈
+    setCurrentId(prev => prev === id ? null : id);
   }
 
   return (
